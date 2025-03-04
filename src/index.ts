@@ -3,6 +3,7 @@ import express from "express";
 import { readFileSync } from "fs";
 import serveStatic from "serve-static";
 import dotenv from "dotenv";
+import saveCart from "./routes/saveCart.js";
 
 import shopify from "./shopify.js";
 
@@ -13,6 +14,10 @@ const envPort = process.env.PORT as string;
 const PORT = parseInt(backendPort || envPort, 10);
 
 const app = express();
+
+app.use(express.json());
+app.use("/api", saveCart);
+
 
 // Set up Shopify authentication and webhook handling
 app.get(shopify.config.auth.path, shopify.auth.begin());
