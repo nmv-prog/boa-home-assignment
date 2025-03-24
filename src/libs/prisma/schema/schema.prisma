@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["prismaSchemaFolder"]
 }
 
 datasource db {
@@ -22,17 +23,4 @@ model session {
 
 model shopify_sessions_migrations {
   migration_name String @id @db.VarChar(255)
-}
-
-model CartItem {
-  id              Int      @id @default(autoincrement())
-  productId       String   @db.VarChar(255)
-  productVariantId String   @db.VarChar(255)
-  title           String   @db.VarChar(255)
-  quantity        Int
-  userId          String   @db.VarChar(255)
-  shopId          String   @db.VarChar(255)
-  createdAt       DateTime @default(now())
-
-  @@map("cart_items")
 }

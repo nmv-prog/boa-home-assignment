@@ -4,11 +4,10 @@ import {
   Button,
   Checkbox,
   reactExtension,
-  useApi,
   View,
 } from "@shopify/ui-extensions-react/checkout";
 import { useState } from "react";
-import { saveCart } from "./utils/cartRequests";
+import useCartSaver from "./utils/cartRequests";
 import { ProductInCartType, SelectedItemType } from "./utils/types";
 
 export default reactExtension("purchase.checkout.block.render", () => (
@@ -17,16 +16,9 @@ export default reactExtension("purchase.checkout.block.render", () => (
 
 function Extension() {
 
-  const api = useApi();
-  const base_url = api.extension?.scriptUrl;
-  const user_id = api.buyerIdentity.customer.current?.id || '';
-  const shop_id = api.shop?.id || '';
-  const productsInCart = api.lines?.current || [];
-
-
-  const [isSaved, setIsSaved] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
   const [selectedItems, setSelectedItems] = useState<SelectedItemType[]>([]);
+
+  const { saveCart, isSaved, isHidden, user_id, productsInCart } = useCartSaver();
 
   const handleCheckboxChange = (product: ProductInCartType) => {
     setSelectedItems((prev) => {
@@ -46,11 +38,11 @@ function Extension() {
     <>
       <BlockStack border={"dotted"} padding={"tight"} borderRadius={"large"} display={isHidden ? 'none' : 'auto'} >
 
-      {!user_id &&
+        {!user_id &&
           <Banner status="warning" >
             If you want to save products, please log in to your account.
           </Banner>
-      }
+        }
 
         {!isSaved ? <Banner status="info" title="Save your cart" >
           {productsInCart.map((product) => (
@@ -65,7 +57,7 @@ function Extension() {
           <View padding={"extraTight"} >
             <Button
               disabled={!user_id}
-              onPress={() => saveCart({ selectedItems, base_url, user_id, shop_id, setIsSaved, setIsHidden })}
+              onPress={() => saveCart({ selectedItems })}
             >
               Save
             </Button>

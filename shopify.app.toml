@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "215e40ab3752da8d6b8af38fc779d816"
-application_url = "https://replica-versus-engines-consoles.trycloudflare.com"
+application_url = "https://horizon-kruger-soldier-atm.trycloudflare.com"
 embedded = true
 name = "boa-home-task-MN"
 handle = "boa-home-task-mn"
@@ -20,9 +20,9 @@ scopes = ""
 
 [auth]
 redirect_urls = [
-  "https://replica-versus-engines-consoles.trycloudflare.com/auth/callback",
-  "https://replica-versus-engines-consoles.trycloudflare.com/auth/shopify/callback",
-  "https://replica-versus-engines-consoles.trycloudflare.com/api/auth/callback"
+  "https://horizon-kruger-soldier-atm.trycloudflare.com/auth/callback",
+  "https://horizon-kruger-soldier-atm.trycloudflare.com/auth/shopify/callback",
+  "https://horizon-kruger-soldier-atm.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

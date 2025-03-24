@@ -32,8 +32,6 @@ app.post(
   shopify.processWebhooks({ webhookHandlers: {} })
 );
 
-app.use(express.json());
-
 // All endpoints after this point will require an active session
 app.use("/api/*", shopify.validateAuthenticatedSession());
 

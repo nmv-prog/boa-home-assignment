@@ -13,7 +13,7 @@
 		"npm": "10.2.4"
 	},
 	"prisma": {
-		"schema": "libs/prisma/schema.prisma"
+		"schema": "libs/prisma/schema"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.22.0",

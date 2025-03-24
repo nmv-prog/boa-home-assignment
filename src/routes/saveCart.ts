@@ -1,9 +1,9 @@
-import { PrismaClient } from "@prisma/client";
 import { Router } from "express";
 import { SaveCartRequestType } from "../utils/types.js";
+import { PrismaClient } from "@prisma/client/extension";
+import { prisma } from "../libs/prisma/schema/index.js";
 
 const router = Router();
-const prisma = new PrismaClient();
 
 router.post("/save-cart", async (req, res) => {
     try {
